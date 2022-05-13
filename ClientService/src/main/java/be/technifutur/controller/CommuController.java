@@ -15,23 +15,23 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/commu")
 public class CommuController {
     private final RestTemplate template;
-    private final DiscoveryClient discoveryClient;
+    //private final DiscoveryClient discoveryClient;
 
-    public CommuController(RestTemplate template, DiscoveryClient discoveryClient) {
+    public CommuController(RestTemplate template/*, DiscoveryClient discoveryClient*/) {
         this.template = template;
-        this.discoveryClient = discoveryClient;
+        //this.discoveryClient = discoveryClient;
     }
 
     @GetMapping
     public String startCommu(){
-        List<ServiceInstance> instances = discoveryClient.getInstances("film-service");
-        URI uri = instances
-            .get(new Random().nextInt(instances.size()))
-            .getUri()
-            .resolve("/commu");
-        String responseBody = template.getForObject(uri, String.class);
+        // List<ServiceInstance> instances = discoveryClient.getInstances("film-service");
+        // ServiceInstance instance = instances.get(new Random().nextInt(instances.size()));
+        // URI uri = instance
+        //     .getUri()
+        //     .resolve("/commu");
+        String responseBody = template.getForObject("http://film-service/commu", String.class);
 
-        return "passé par client : " + responseBody;
+        return "GET to film-service response:" + responseBody;
     }
     
 }
