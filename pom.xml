@@ -23,6 +23,7 @@
 	<modules>     
 		<module>FilmService</module>
 		<module>ClientService</module>   
+		<module>ApiGatewayService</module>
 	</modules>
 
 	<properties> 

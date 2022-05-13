@@ -15,11 +15,11 @@ services:
     deploy:
       replicas: 3
     build: ./FilmService
-    ports:
-      - "8080:8080"
+    # ports:
+    #   - "8080:8080"
     networks:
       - demo-cloud-net
-    depends-on:
+    depends_on:
       - consul-server
   client-service:
     # container-name: ClientService
@@ -28,5 +28,14 @@ services:
       - "8181:8181"
     networks:
       - demo-cloud-net
-    depends-on:
+    depends_on:
+      - consul-server
+  apigateway-service:
+    # container-name: ClientService
+    build: ./ApiGatewayService
+    ports:
+      - "8080:8080"
+    networks:
+      - demo-cloud-net
+    depends_on:
       - consul-server
