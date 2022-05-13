@@ -8,7 +8,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * Hello world!
  *
  */
-@EnableDiscoveryClient
 @SpringBootApplication
 public class FilmApp 
 {
