@@ -1,0 +1,23 @@
+server:
+    port: 8080
+
+spring:
+  application:
+    name: film-service
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        sµervice-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${random.uuid}
+                # health-check-path: "/actuator/health"
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - beans
+          - mappings
+          - metrics
